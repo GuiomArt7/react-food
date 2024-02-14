@@ -44,6 +44,11 @@ export default function Login() {
         />
       </form>
     </div>
+    <nav className='mt-5'>
+      <a href="/auth/registro">
+        ¿No tienes cuenta? Crea una aquí
+      </a>
+    </nav>
     <div>
       <Outlet />
     </div>
