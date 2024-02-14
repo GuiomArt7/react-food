@@ -2,6 +2,12 @@
 
 export default function Sidebar() {
   return (
-    <div className="md:w-72">Sidebar</div>
+    <aside className="md:w-72">
+        <div className="p-4">
+            <img  className="w-40"
+            src="img/logo.svg" 
+            alt="imagen logo" />
+        </div>
+    </aside>
   )
 }
