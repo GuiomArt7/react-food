@@ -75,6 +75,12 @@ export default function Registro() {
           />
         </form>
       </div>
+
+      <nav className='mt-5'>
+      <a href="/auth/login">
+        ¿Ya tienes una cuenta? Inicia sesión
+      </a>
+    </nav>
       <div>
         <Outlet />
       </div>
