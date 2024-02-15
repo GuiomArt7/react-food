@@ -5,12 +5,12 @@ export default function Sidebar() {
   return (
     <aside className="md:w-72">
         <div className="p-4">
-            <img  className="w-40"
-            src="img/logo.svg" 
+            <img  className="w-50"
+            src="img/s.svg" 
             alt="imagen logo" />
         </div>
 
-        <div className="mt-10">
+        <div className="mt-1">
             {categorias.map( categoria => (
                 <Categoria 
                     categoria={categoria}
