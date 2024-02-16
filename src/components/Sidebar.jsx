@@ -1,7 +1,10 @@
+import useMenu from "../hooks/useMenu"
 import Categoria from "./Categoria"
-import { categorias } from "../data/categorias"
+
 
 export default function Sidebar() {
+
+    const { categorias } = useMenu()
   return (
     <aside className="md:w-72">
         <div className="p-4">

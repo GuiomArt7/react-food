@@ -1,6 +1,10 @@
 import { productos } from "../data/producto"
 import Producto from "../components/Producto"
+import useMenu from "../hooks/useMenu"
+
 export default function Inicio() {
+
+  const {} = useMenu()
   return (
     <>
       <h1 className="text-4xl font-black">Menú</h1>
