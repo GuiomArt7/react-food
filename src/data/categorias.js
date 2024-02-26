@@ -15,13 +15,13 @@ const categorias = [
         id: 3
       },
       {
-        icono: "cafe",
-        nombre: "Bebidas",
+        icono: "postre",
+        nombre: "Postres",
         id: 4
       },
       {
-        icono: "postre",
-        nombre: "Postres",
+        icono: "cafe",
+        nombre: "Bebidas",
         id: 5
       },
     
