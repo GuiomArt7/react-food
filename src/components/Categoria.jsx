@@ -2,10 +2,10 @@ import useMenu from "../hooks/useMenu"
 
 export default function Categoria({categoria}){
 
-  const {handleClickCategoria} = useMenu();
+  const {handleClickCategoria, categoriaActual} = useMenu();
   const {icono, id, nombre} = categoria
   return (
-    <div className="flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer">
+    <div className={`${categoriaActual.id === id ? "bg-amber-400" : "bg-white"} flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer`}>
         <img
             alt="Imagen Icono"
             src={`/img/icono_${icono}.svg`}

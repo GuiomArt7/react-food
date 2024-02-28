@@ -1,10 +1,11 @@
-import { productos } from "../data/producto"
+import { productos as data } from "../data/producto"
 import Producto from "../components/Producto"
 import useMenu from "../hooks/useMenu"
 
 export default function Inicio() {
 
-  const { categoriaActual} = useMenu()
+  const { categoriaActual } = useMenu()
+  const productos = data.filter(producto => producto.categoria_id === categoriaActual.id)
   return (
     <>
       <h1 className="text-4xl font-black">{categoriaActual.nombre}</h1>

@@ -189,7 +189,7 @@ const productos = [
       {
         nombre: "Licuado verde",
         precio: 50,
-        imagen: "donas_13",
+        imagen: "cafe_03",
         categoria_id: 5,
         id: 27
       }
