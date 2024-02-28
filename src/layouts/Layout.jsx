@@ -1,9 +1,12 @@
 import { Outlet } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
 import Resumen from '../components/Resumen'
+import useMenu from '../hooks/useMenu'
 
 
 export default function Layout() {
+
+  const { modal } = useMenu();
   return (
     <div className='md:flex'>
         <Sidebar />
