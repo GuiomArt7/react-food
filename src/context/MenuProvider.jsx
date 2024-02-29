@@ -8,14 +8,18 @@ const MenuProvider = ({children}) => {
     const [categorias, setCategorias] = useState(categoriasDB);
     const [categoriaActual, setCategoriaActual] = useState(categorias[0]);
     const [modal, setModal] = useState(false);
+    const [producto, setProducto] = useState({});
 
     const handleClickCategoria = id => {
         const categoria = categorias.filter(categoria => categoria.id === id)[0]
         setCategoriaActual(categoria)
     }
-
+    /* Funsión para el modal */
     const handleClickModal = () => {
         setModal(!modal)
+    }
+    const handleSetProducto = producto => {
+        setProducto(producto)
     }
     
     return(
@@ -25,7 +29,9 @@ const MenuProvider = ({children}) => {
                 categoriaActual,
                 handleClickCategoria,
                 modal,
-                handleClickModal
+                handleClickModal,
+                producto,
+                handleSetProducto
             }}
         >{children}</MenuContext.Provider>
 

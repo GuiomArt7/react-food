@@ -3,13 +3,13 @@ import useMenu from "../hooks/useMenu"
 
 export default function Producto({producto}) {
 
-    const { handleClickModal } = useMenu();
+    const { handleClickModal, handleSetProducto} = useMenu();
     const { nombre, imagen, precio} = producto
 
   return (
     <div className="border p-3 shadow bg-whie">
         <img 
-        className="w-full"
+        className="w-full h-80"
         src={`/img/${imagen}.jpg`}
         alt={`imagen ${nombre}`} 
         />
@@ -25,6 +25,7 @@ export default function Producto({producto}) {
                 className="bg-cyan-800  hover:bg-cyan-950 text-white w-full mt-5 p-3 uppercase font-bold"
                 onClick={() => {
                     handleClickModal();
+                    handleSetProducto(producto);
                 }}
                 >Agregar
 
