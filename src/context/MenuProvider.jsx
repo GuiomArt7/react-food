@@ -44,6 +44,13 @@ const MenuProvider = ({children}) => {
         setProducto(productoActualizar)
         setModal(!modal)
     }
+
+     /* Eliminar producto */
+     const handleEliminarProductoPedido = id => {
+        const pedidoActualizado = pedido.filter(producto => producto.id !== id)
+        setPedido(pedidoActualizado)
+        toast.success('Eliminado del pedido')
+     }
     
     return(
         <MenuContext.Provider 
