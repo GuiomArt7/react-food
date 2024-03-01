@@ -13,6 +13,11 @@ const MenuProvider = ({children}) => {
     const [pedido, setPedido] = useState([]);
     const [total, setTotal] = useState(0);
 
+    useEffect(() => {
+        const nuevoTotal = pedido.reduce((total, producto) => (producto.precio * producto.cantidad) + total, 0)
+        setTotal(nuevoTotal)
+    }, [pedido])
+
     const handleClickCategoria = id => {
         const categoria = categorias.filter(categoria => categoria.id === id)[0]
         setCategoriaActual(categoria)
