@@ -21,8 +21,7 @@ const customStyles = {
 Modal.setAppElement('#root')
 export default function Layout() {
 
-  const { modal, handleClickModal } = useMenu();
-  console.log(modal)
+  const { modal } = useMenu();
   return (
     <>
       <div className='md:flex'>

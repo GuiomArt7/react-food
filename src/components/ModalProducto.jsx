@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useMenu from "../hooks/useMenu"
 import {formatearDinero} from "../helpers";
 
 export default function ModalProducto() {
 
-    const {producto, handleClickModal, handleAgregarPedido} = useMenu();
+    const {producto, handleClickModal, handleAgregarPedido, pedido} = useMenu();
     const [cantidad, setCantidad] = useState(1);
+    const [edicion, setEdicion] = useState(false);
+
+    useEffect(() => {
+      if(pedido.some( pedidoState => pedidoState.id === producto.id)) {
+        const productoEdicion = pedido.filter( pedidoState => pedidoState.id === producto.id)[0]
+        setCantidad(productoEdicion.cantidad)
+        setEdicion(true)
+      }
+    }, /* Arreglo de dependencias */[pedido])
 
   return (
     <div className="md:flex items-center gap-10">
@@ -63,8 +72,7 @@ export default function ModalProducto() {
             handleAgregarPedido({...producto, cantidad})
             handleClickModal()
           }}>
-          
-            Añadir al pedido
+          {edicion ? 'Guardar cambios' : 'Añadir al pedido'}
           </button>
         </div>
     </div>
