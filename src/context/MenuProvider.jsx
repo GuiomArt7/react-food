@@ -65,7 +65,8 @@ const MenuProvider = ({children}) => {
                 pedido,
                 setPedido,
                 handleAgregarPedido,
-                handleEditarCantidad
+                handleEditarCantidad,
+                handleEliminarProductoPedido
             }}
         >{children}</MenuContext.Provider>
 
