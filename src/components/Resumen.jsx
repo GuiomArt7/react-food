@@ -1,4 +1,5 @@
 import useMenu from "../hooks/useMenu"
+import ResumenProducto from "./ResumenProducto";
 
 export default function Resumen() {
     const {pedido} = useMenu();
@@ -17,9 +18,10 @@ export default function Resumen() {
             No hay elementos en tu pedido aún
           </p>
         ) : (
-          {pedido.map(producto => (
-            
-          ))}
+          pedido.map(producto => (
+            <ResumenProducto
+            producto={producto}/>
+          ))
         )}
       </div>
 
