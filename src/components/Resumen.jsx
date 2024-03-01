@@ -2,7 +2,7 @@ import useMenu from "../hooks/useMenu"
 import ResumenProducto from "./ResumenProducto";
 
 export default function Resumen() {
-    const {pedido} = useMenu();
+    const {pedido, total} = useMenu();
   return (
     <aside className="w-72 h-screen overflow-y-scroll p-5">
       <h1 className="text-4xl font-black">
