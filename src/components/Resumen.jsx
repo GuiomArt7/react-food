@@ -39,9 +39,12 @@ export default function Resumen() {
         <div className="mt-5">
           <input 
             type="submit" 
-            className="bg-cyan-800 hover:bg-cyan-950 px-5 py-2 rounded uppercase 
-            font-bold text-white text-center w-full cursor-pointer"
+            className={`${comprobarPedido() ? 
+              'bg-indigo-100' : 
+              'bg-cyan-800 hover:bg-cyan-950'} px-5 py-2 rounded uppercase 
+            font-bold text-white text-center w-full cursor-pointer`}
             value="Confirmar pedido"
+            disabled={comprobarPedido()}
           />
         </div>
 
