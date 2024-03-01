@@ -1,3 +1,4 @@
+import { formatearDinero } from "../helpers";
 import useMenu from "../hooks/useMenu"
 import ResumenProducto from "./ResumenProducto";
 
@@ -28,6 +29,7 @@ export default function Resumen() {
 
       <p className="text-xl mt-10">
             Total: {''}
+            {formatearDinero(total)}
       </p>
 
       <form className="w-full">
