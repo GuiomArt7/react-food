@@ -3,7 +3,7 @@ import { formatearDinero } from "../helpers";
 
 export default function ResumenProducto({producto}) {
 
-    const { handleEditarCantidad } = useMenu();
+    const { handleEditarCantidad, handleEliminarProductoPedido } = useMenu();
     const { id, nombre, precio, cantidad } = producto
     return (
       <div className="shadow space-y-1 p-4 bg-white">
