@@ -25,7 +25,7 @@ const MenuProvider = ({children}) => {
     }
 
     /* Funciones para agregar pedidos al resumen */
-    const handleAgregarPedido = ({categoria_id, imagen, ...producto}) => {
+    const handleAgregarPedido = ({categoria_id, ...producto}) => {
         setPedido([...pedido, producto])
         if(pedido.some( pedidoState => pedidoState.id === producto.id)) {
             const pedidoActualizado = pedido.map( pedidoState => pedidoState.id === 
@@ -40,7 +40,9 @@ const MenuProvider = ({children}) => {
 
     /* Editar pedido */
     const handleEditarCantidad = id => {
-
+        const productoActualizar = pedido.filter(producto => producto.id === id)[0]
+        setProducto(productoActualizar)
+        setModal(!modal)
     }
     
     return(
