@@ -37,6 +37,11 @@ const MenuProvider = ({children}) => {
             toast.success('Agregado al pedido')
           }
     }
+
+    /* Editar pedido */
+    const handleEditarCantidad = id => {
+
+    }
     
     return(
         <MenuContext.Provider 
@@ -50,7 +55,8 @@ const MenuProvider = ({children}) => {
                 handleSetProducto,
                 pedido,
                 setPedido,
-                handleAgregarPedido
+                handleAgregarPedido,
+                handleEditarCantidad
             }}
         >{children}</MenuContext.Provider>
 
