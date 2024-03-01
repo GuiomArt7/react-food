@@ -20,6 +20,7 @@ export default function Resumen() {
         ) : (
           pedido.map(producto => (
             <ResumenProducto
+            key={producto.id}
             producto={producto}/>
           ))
         )}
