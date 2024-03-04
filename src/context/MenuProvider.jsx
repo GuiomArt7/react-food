@@ -1,13 +1,14 @@
 import { createContext, useState, useEffect} from "react"
 import { toast } from "react-toastify";
-import { categorias as categoriasDB} from "../data/categorias"
+//import { categorias as categoriasDB} from "../data/categorias"
+import axios from "axios";
 
 const MenuContext = createContext();
 
 const MenuProvider = ({children}) => {
 
-    const [categorias, setCategorias] = useState(categoriasDB);
-    const [categoriaActual, setCategoriaActual] = useState(categorias[0]);
+    const [categorias, setCategorias] = useState([]);
+    const [categoriaActual, setCategoriaActual] = useState({});
     const [modal, setModal] = useState(false);
     const [producto, setProducto] = useState({});
     const [pedido, setPedido] = useState([]);
@@ -18,6 +19,22 @@ const MenuProvider = ({children}) => {
         const nuevoTotal = pedido.reduce((total, producto) => (producto.precio * producto.cantidad) + total, 0)
         setTotal(nuevoTotal)
     }, [pedido])
+    /* ********************************************** */
+
+    /* AXIOS */
+    const obtenerCategorias = async () => {
+        try {
+            const {data} = await axios('http://localhost/api/categorias');
+            setCategorias(data.data)
+            setCategoriaActual(data.data[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        obtenerCategorias();
+    }, [])
     /* ********************************************** */
     const handleClickCategoria = id => {
         const categoria = categorias.filter(categoria => categoria.id === id)[0]
