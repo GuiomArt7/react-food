@@ -9,6 +9,8 @@ export default function Registro() {
   const passwordRef = createRef();
   const passwordConfirmationRef = createRef();
 
+  const [errores, setErrores] = useState([])
+
   const handleSubmit = async e => {
     e.preventDeafault();
 
@@ -22,7 +24,7 @@ export default function Registro() {
       const respuesta = await clienteAxios.post('/api/registro', datos)
       console.log(respuesta)
     } catch (error) {
-      console.log(error)
+      setErrores(Object.values(error.response.data.errors))
     }
   }
 
@@ -33,9 +35,10 @@ export default function Registro() {
 
       <div className="bg-white shadow-md rounded-md mt-10 px-5 py-10">
         <form 
-        onSubmit={handleSubmit}
-        action="">
+          onSubmit={handleSubmit}
+          action="">
 
+          {errores ? errores.map(error => <p>{error}</p>) : null}
 
           {/* Nombre */}
           <div className="mb-4">
