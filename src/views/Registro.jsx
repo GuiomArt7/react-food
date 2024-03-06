@@ -1,7 +1,8 @@
 import { createRef, useState } from "react";
 import { Link } from "react-router-dom";
 import clienteAxios from "../config/axios";
-//import { Outlet } from 'react-router-dom'
+import Alerta from "../components/Alerta";
+
 
 export default function Registro() {
   const nameRef = createRef();
@@ -36,9 +37,10 @@ export default function Registro() {
       <div className="bg-white shadow-md rounded-md mt-10 px-5 py-10">
         <form 
           onSubmit={handleSubmit}
-          action="">
+          noValidate
+        >
 
-          {errores ? errores.map(error => <p>{error}</p>) : null}
+          {errores ? errores.map((error, i) => <Alerta key={i}>{error}</Alerta>) : null }
 
           {/* Nombre */}
           <div className="mb-4">
@@ -52,6 +54,7 @@ export default function Registro() {
               name="name"
               placeholder="Tu nombre"
               ref={nameRef}
+              autoComplete="off"
             />
           </div>
 
@@ -67,6 +70,7 @@ export default function Registro() {
               name="email"
               placeholder="Tu e-mail"
               ref={emailRef}
+              autoComplete="off"
             />
           </div>
 
@@ -111,7 +115,6 @@ export default function Registro() {
       <nav className="mt-5">
         <Link to="/auth/login">¿Ya tienes una cuenta? Inicia sesión</Link>
       </nav>
-      <div>{/* <Outlet /> */}</div>
     </>
   );
 }
