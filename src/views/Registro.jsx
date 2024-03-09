@@ -13,7 +13,7 @@ export default function Registro() {
   const [errores, setErrores] = useState([])
 
   const handleSubmit = async e => {
-    e.preventDeafault();
+    e.preventDefault();
 
     const datos = {
       name: nameRef.current.value,
