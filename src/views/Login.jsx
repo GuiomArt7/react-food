@@ -80,7 +80,6 @@ export default function Login() {
       </Link>
     </nav>
     <div>
-      <Outlet />
     </div>
   </>
   )
