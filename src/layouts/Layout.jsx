@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar'
 import Resumen from '../components/Resumen'
 import ModalProducto from '../components/ModalProducto'
 import useMenu from '../hooks/useMenu'
+import { useAuth } from '../hooks/useAuth'
 
 
 /* Estilos del modal */
@@ -23,7 +24,12 @@ const customStyles = {
 Modal.setAppElement('#root')
 export default function Layout() {
 
+  const {user, error} = useAuth({middleware: 'auth'});
   const { modal } = useMenu();
+
+  console.log(user)
+  console.log(error)
+
   return (
     <>
       <div className='md:flex'>
