@@ -35,6 +35,7 @@ export default function Login() {
       noValidate
       
       >
+        {errores ? errores.map((error, i) => <Alerta key={i}>{error}</Alerta>) : null }
         {/* Email */}
         <div className="mb-4">
           <label 
