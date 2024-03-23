@@ -74,6 +74,23 @@ const MenuProvider = ({children}) => {
         setPedido(pedidoActualizado)
         toast.success('Eliminado del pedido')
      }
+
+     const handleSubmitNuevaOrden = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        try {
+            await clienteAxios.post('/api/pedidos',
+            {
+
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+     }
     
     return(
         <MenuContext.Provider 
@@ -90,7 +107,8 @@ const MenuProvider = ({children}) => {
                 handleAgregarPedido,
                 handleEditarCantidad,
                 handleEliminarProductoPedido,
-                total
+                total,
+                handleSubmitNuevaOrden
             }}
         >{children}</MenuContext.Provider>
 

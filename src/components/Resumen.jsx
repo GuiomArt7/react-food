@@ -3,9 +3,14 @@ import useMenu from "../hooks/useMenu"
 import ResumenProducto from "./ResumenProducto";
 
 export default function Resumen() {
-    const {pedido, total} = useMenu();
+    const {pedido, total, handleSubmitNuevaOrden} = useMenu();
 
     const comprobarPedido = ()=> pedido.length === 0;
+
+    const handleSubmit = e => {
+      e.preventDefault();
+      handleSubmitNuevaOrden();
+    }
 
   return (
     <aside className="w-72 h-screen overflow-y-scroll p-5">
@@ -35,7 +40,10 @@ export default function Resumen() {
             {formatearDinero(total)}
       </p>
 
-      <form className="w-full">
+      <form 
+      className="w-full"
+      onSubmit={handleSubmit}
+      >
         <div className="mt-5">
           <input 
             type="submit" 
