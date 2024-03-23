@@ -6,7 +6,7 @@ import { useAuth } from "../hooks/useAuth"
 export default function Sidebar() {
 
     const { categorias } = useMenu()
-    const {logout} = useAuth({middleware: 'auth'})
+    const {logout, user} = useAuth({middleware: 'auth'})
   return (
     <aside className="md:w-72">
         <div className="p-4">
@@ -14,6 +14,8 @@ export default function Sidebar() {
             src="img/s.svg" 
             alt="imagen logo" />
         </div>
+
+        <p className="my-10 text-xl font-bold text-center text-indigo-900">Hola {user?.name}</p>
 
         <div className="mt-1">
             {categorias.map( categoria => (
