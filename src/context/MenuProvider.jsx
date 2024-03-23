@@ -80,7 +80,7 @@ const MenuProvider = ({children}) => {
         try {
             await clienteAxios.post('/api/pedidos',
             {
-
+                total
             },
             {
                 headers: {
