@@ -6,6 +6,7 @@ import Login from './views/Login'
 import Registro from './views/Registro'
 import AdminLayout from './layouts/AdminLayout'
 import Ordenes from './views/Ordenes'
+import Productos from './views/Productos'
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Ordenes/>
+            },
+            {
+                path: '/admin/productos',
+                element: <Productos/>
             }
         ]
 
