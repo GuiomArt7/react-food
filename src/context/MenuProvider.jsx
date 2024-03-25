@@ -78,7 +78,7 @@ const MenuProvider = ({children}) => {
      const handleSubmitNuevaOrden = async () => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
-            await clienteAxios.post('/api/pedidos',
+            const {data} = await clienteAxios.post('/api/pedidos',
             {
                 total,
                 productos: pedido.map(producto => {
@@ -93,6 +93,12 @@ const MenuProvider = ({children}) => {
                     Authorization: `Bearer ${token}`
                 }
             })
+
+
+            toast.success(data.message);
+            setTimeout(() => {
+                setPedido([])
+            }, 1000);
         } catch (error) {
             console.log(error)
         }
