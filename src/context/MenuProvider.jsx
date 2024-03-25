@@ -80,7 +80,13 @@ const MenuProvider = ({children}) => {
         try {
             await clienteAxios.post('/api/pedidos',
             {
-                total
+                total,
+                productos: pedido.map(producto => {
+                    return {
+                        id: producto.id,
+                        cantidad: producto.cantidad
+                    }
+                })
             },
             {
                 headers: {
