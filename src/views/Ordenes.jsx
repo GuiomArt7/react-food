@@ -1,6 +1,7 @@
 import useSWR from "swr"
 import clienteAxios from "../config/axios"
 import {formatearDinero} from '../helpers'
+import useMenu from '../hooks/useMenu'
 
 export default function Ordenes() {
 
@@ -12,6 +13,8 @@ export default function Ordenes() {
   })
 
   const {data, error, isLoading} = useSWR('/api/pedidos', fetcher)
+
+  const {handleClickCompletarPedido} = useMenu()
  
   if(isLoading) return 'Cargando...'
   return (
@@ -54,6 +57,7 @@ export default function Ordenes() {
                 type="button" 
                 className='bg-cyan-800 hover:bg-cyan-950 px-5 py-2 rounded uppercase 
                 font-bold text-white text-center w-full cursor-pointer'
+                onClick={() => handleClickCompletarPedido(pedido.id)}
               >
                 Completar
               </button>
