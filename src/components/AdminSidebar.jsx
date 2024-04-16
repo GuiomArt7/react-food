@@ -9,15 +9,16 @@ export default function AdminSidebar() {
     <aside className="md:w-72 h-screen">
         <div className="p-4">
             <img 
-            src="/img/logo.svg" 
+            src="/img/s.svg" 
             alt="imagen logotipo"
-            className="w-40" 
+            className="w-50" 
             />
         </div>
 
         <nav className="flex flex-col p-4">
-            <Link to="/admin" className="font-bold text-lg">Órdenes</Link>
-            <Link to="/admin/productos" className="font-bold text-lg">Productos</Link>
+            <Link to="/admin" className="font-bold text-lg flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer">Órdenes</Link>
+            <Link to="/admin/productos" className="font-bold text-lg flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer">Productos</Link>
+            <Link to="/" className="font-bold text-lg flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer" target="_blank">Ver Menú</Link>
         </nav>
 
         <div className="my-5 px-5">
