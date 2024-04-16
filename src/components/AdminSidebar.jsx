@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { useLocation } from "react-router-dom";
 
 export default function AdminSidebar() {
 
     const {logout} = useAuth({middleware: 'auth'});
+    const location = useLocation(); // Obtener la ruta actual
 
   return (
     <aside className="md:w-72 h-screen">
@@ -16,8 +18,8 @@ export default function AdminSidebar() {
         </div>
 
         <nav className="flex flex-col p-4">
-            <Link to="/admin" className="font-bold text-lg flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer">Órdenes</Link>
-            <Link to="/admin/productos" className="font-bold text-lg flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer">Productos</Link>
+            <Link to="/admin" className={`font-bold text-lg flex items-center gap-4 border w-full p-3 ${location.pathname === "/admin" ? "bg-amber-400" : ""}`}>Órdenes</Link>
+            <Link to="/admin/productos" className={`font-bold text-lg flex items-center gap-4 border w-full p-3 ${location.pathname === "/admin/productos" ? "bg-amber-400" : ""}`}>Productos</Link>
             <Link to="/" className="font-bold text-lg flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer" target="_blank">Ver Menú</Link>
         </nav>
 
