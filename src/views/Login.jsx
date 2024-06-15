@@ -1,5 +1,4 @@
 import { createRef, useState } from "react";
-import { Link } from "react-router-dom";
 import Alerta from "../components/Alerta";
 import { useAuth } from "../hooks/useAuth";
 
@@ -77,9 +76,7 @@ export default function Login() {
       </form>
     </div>
     <nav className='mt-5'>
-      <Link to="/auth/registro">
-        ¿No tienes cuenta? Crea una aquí
-      </Link>
+      
     </nav>
     <div>
     </div>

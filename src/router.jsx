@@ -44,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: '/admin/productos',
                 element: <Productos/>
+            },
+            {
+                path: '/admin/auth/registro',
+                element: <Registro />
             }
         ]
 

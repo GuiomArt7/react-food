@@ -11,7 +11,7 @@ export default function Registro() {
   const passwordConfirmationRef = createRef();
 
   const [errores, setErrores] = useState([]);
-  const {registro} = useAuth({middleware: 'guest', url: '/'})
+  const {registro} = useAuth({middleware: 'AUTH_TOKEN', url: '/admin'})
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -111,7 +111,7 @@ export default function Registro() {
       </div>
 
       <nav className="mt-5">
-        <Link to="/auth/login">¿Ya tienes una cuenta? Inicia sesión</Link>
+        <Link to="/admin">Menú principal</Link>
       </nav>
     </>
   );
