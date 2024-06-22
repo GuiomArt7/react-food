@@ -29,23 +29,28 @@ export default function Ordenes() {
 )
   return (
     <div>
-      <h1 className='text-4xl font-black'>Órdenes</h1>
-      <p className='text-2xl my-10'>Administra las órdenes desde aquí</p>
+      <h1 className='text-5xl font-black'>Órdenes</h1>
+      <p className='text-3xl my-10'>Administra las órdenes desde aquí</p>
 
       <div className="grid grid-cols-2 gap-5">
         {data.data.data.map(pedido => (
           <div key={pedido.id} className="p-5 bg-white shadow space-y-2 border-b">
-              <p className="text-xl font-bold text-slate-600">
-                  Contenido del pedido
+              <p className="text-4xl font-bold text-slate-600">
+              Comanda {pedido.id}
+              </p>
+
+              <p className="text-4xl font-bold text-slate-600">
+                Cliente: {''}
+                <span className="font-normal">{pedido.user.name}</span>
               </p>
 
               {pedido.productos.map(producto => (
                 <div 
                   key={producto.id}
                   className="border-b border-b-slate-200 last-of-type:border-none py-4">
-                    <p className="text-lg">ID: {producto.id}</p>
-                    <p className="text-lg">{producto.nombre}</p>
-                    <p className="text-lg ">
+                    {/* <p className="text-lg">ID: {producto.id}</p> */}
+                    <p className="text-2xl">{producto.nombre}</p>
+                    <p className="text-2xl ">
                       Cantidad: {''}
                       <span className="font-bold">{producto.pivot.cantidad}</span>
                     </p>
@@ -53,14 +58,9 @@ export default function Ordenes() {
                 </div>
               ))}
 
-              <p className="text-lg font-bold text-slate-600">
-                Cliente: {''}
-                <span className="font-normal">{pedido.user.name}</span>
-              </p>
-
-              <p className="text-lg font-bold text-amber-600">
+              <p className="text-2xl font-bold text-amber-600">
                 Total a pagar: {''}
-                <span className="font-normal text-slate-600">{formatearDinero(pedido.total)}</span>
+                <span className="font-normal text-slate-700">{formatearDinero(pedido.total)}</span>
               </p>
 
               <button 
