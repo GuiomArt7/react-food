@@ -36,7 +36,7 @@ export default function Producto({producto, botonAgregar = false, botonDisponibl
                 <button
                 type="button"
                 className="bg-cyan-800  hover:bg-cyan-950 text-white w-full mt-5 p-3 uppercase font-bold"
-                onClick={() => handleClickProductoAgotado(producto.id)}
+                onClick={() => handleClickProductoAgotado(producto.id,1)}
                 >Producto Agotado
 
             </button>
@@ -47,7 +47,7 @@ export default function Producto({producto, botonAgregar = false, botonDisponibl
                 type="button"
                 className="bg-cyan-800  hover:bg-cyan-950 text-white w-full mt-5 p-3 uppercase font-bold"
                 onClick={() => {
-                    handleClickAgotado(producto.id,)}}
+                    handleClickAgotado(producto.id,0)}}
                 >Producto Disponible
 
             </button>

@@ -126,7 +126,7 @@ const MenuProvider = ({children}) => {
         }
      }
 
-     const handleClickProductoAgotado = async id => {
+     const handleClickProductoAgotado = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
             await clienteAxios.put(`/api/productos/${id}`, null, {
@@ -142,7 +142,7 @@ const MenuProvider = ({children}) => {
      const handleClickAgotado = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
-            await clienteAxios.put(`/api/agotados/${id}`, {producto}, {
+            await clienteAxios.put(`/api/productos/${id}`, null, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
