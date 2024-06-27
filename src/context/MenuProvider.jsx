@@ -117,12 +117,16 @@ const MenuProvider = ({children}) => {
                     Authorization: `Bearer ${token}`
                 }
             })
+            toast.success('Pedido Completado');
+            setTimeout(() => {
+                setPedido([])
+            }, 1000);
         } catch (error) {
             console.log(error)
         }
      }
 
-     const handleClickProductoAgotado = async id => {
+     const handleClickProductoAgotado = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
             await clienteAxios.put(`/api/productos/${id}`, null, {
@@ -133,6 +137,20 @@ const MenuProvider = ({children}) => {
         } catch (error) {
             console.log(error)
         }
+     }
+
+     const handleClickAgotado = async (id) => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        try {
+            await clienteAxios.put(`/api/productos/${id}`, null, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
      }
     
     return(
@@ -153,7 +171,8 @@ const MenuProvider = ({children}) => {
                 total,
                 handleSubmitNuevaOrden,
                 handleClickCompletarPedido,
-                handleClickProductoAgotado
+                handleClickProductoAgotado,
+                handleClickAgotado
             }}
         >{children}</MenuContext.Provider>
 

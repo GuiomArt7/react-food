@@ -11,7 +11,7 @@ export default function Registro() {
   const passwordConfirmationRef = createRef();
 
   const [errores, setErrores] = useState([]);
-  const {registro} = useAuth({middleware: 'guest', url: '/'})
+  const {registro} = useAuth({middleware: 'AUTH_TOKEN', url: '/admin'})
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -110,8 +110,8 @@ export default function Registro() {
         </form>
       </div>
 
-      <nav className="mt-5">
-        <Link to="/auth/login">¿Ya tienes una cuenta? Inicia sesión</Link>
+      <nav className="mt-5 inline-flex items-center text-white bg-teal-950 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-teal-600 dark:hover:bg-teal-700 focus:outline-none dark:focus:ring-teal-800">
+        <Link to="/admin">Menú principal</Link>
       </nav>
     </>
   );

@@ -1,9 +1,9 @@
 import { formatearDinero } from "../helpers"
 import useMenu from "../hooks/useMenu"
 
-export default function Producto({producto, botonAgregar = false, botonDisponible = false}) {
+export default function Producto({producto, botonAgregar = false, botonDisponible = false, botonAgotado = false}) {
 
-    const { handleClickModal, handleSetProducto, handleClickProductoAgotado} = useMenu();
+    const { handleClickModal, handleSetProducto, handleClickProductoAgotado, handleClickAgotado} = useMenu();
     const { nombre, imagen, precio} = producto
 
   return (
@@ -36,8 +36,19 @@ export default function Producto({producto, botonAgregar = false, botonDisponibl
                 <button
                 type="button"
                 className="bg-cyan-800  hover:bg-cyan-950 text-white w-full mt-5 p-3 uppercase font-bold"
-                onClick={() => handleClickProductoAgotado(producto.id)}
+                onClick={() => handleClickProductoAgotado(producto.id,1)}
                 >Producto Agotado
+
+            </button>
+            )}
+
+            {botonAgotado && (
+                <button
+                type="button"
+                className="bg-cyan-800  hover:bg-cyan-950 text-white w-full mt-5 p-3 uppercase font-bold"
+                onClick={() => {
+                    handleClickAgotado(producto.id,0)}}
+                >Producto Disponible
 
             </button>
             )}
