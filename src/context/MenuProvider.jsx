@@ -152,6 +152,21 @@ const MenuProvider = ({children}) => {
         }
 
      }
+
+     const handleDeleteUser = async (id) => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        try {
+          await clienteAxios.delete(`/api/usuarios/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+        } catch (error) {
+          console.error(error);
+          toast.error('Error al eliminar usuario');
+        }
+      };
+      
     
     return(
         <MenuContext.Provider 
@@ -172,7 +187,8 @@ const MenuProvider = ({children}) => {
                 handleSubmitNuevaOrden,
                 handleClickCompletarPedido,
                 handleClickProductoAgotado,
-                handleClickAgotado
+                handleClickAgotado,
+                handleDeleteUser
             }}
         >{children}</MenuContext.Provider>
 
