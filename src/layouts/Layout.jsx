@@ -7,6 +7,7 @@ import Resumen from '../components/Resumen'
 import ModalProducto from '../components/ModalProducto'
 import useMenu from '../hooks/useMenu'
 import { useAuth } from '../hooks/useAuth'
+import Footer from '../components/Footer'
 
 
 /* Estilos del modal */
@@ -40,6 +41,7 @@ export default function Layout() {
        
         <Resumen />
       </div>
+      <Footer/>
 
       {/* MODAL */}
       

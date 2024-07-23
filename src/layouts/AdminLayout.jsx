@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
 import AdminSidebar from "../components/AdminSidebar";
 import { useAuth } from "../hooks/useAuth";
+import Footer from "../components/Footer";
 
 export default function AdminLayout() {
 
   useAuth({middleware: 'admin'}); 
   
   return (
+    <>
     <div className="md:flex">
         <AdminSidebar/>
 
@@ -14,5 +16,7 @@ export default function AdminLayout() {
             <Outlet />
         </main>
     </div>
+    <Footer/>
+    </>
   )
 }
