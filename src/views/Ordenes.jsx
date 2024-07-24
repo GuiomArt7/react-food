@@ -26,7 +26,7 @@ export default function Ordenes() {
         <span className="sr-only">Loading...</span>
       </div>
     </div>
-)
+  )
   return (
     <div>
       <h1 className='text-5xl font-black'>Órdenes</h1>

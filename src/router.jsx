@@ -9,6 +9,7 @@ import Ordenes from './views/Ordenes'
 import Productos from './views/Productos'
 import Agotado from './views/Agotado'
 import Usuarios from './views/Usuarios'
+import Ready from './views/Ready'
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Inicio />
+            },
+            {
+                path: '/ready',
+                element: <Ready />
             }
         ]
     },
