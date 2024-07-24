@@ -1,23 +1,26 @@
 import useSWR from "swr";
 import clienteAxios from "../config/axios";
 import { formatearDinero } from "../helpers";
+import useMenu from '../hooks/useMenu'
 
 export default function Ready() {
   const token = localStorage.getItem("AUTH_TOKEN");
 
   const fetcher = async () => {
-    const response = await clienteAxios.get("/api/ready", {
+    const response = await clienteAxios.get("api/ready", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        estado: 1, // Filter for completed orders
+        estado: 0, // Filter for completed orders
       },
     });
     return response.data.data; // Assuming your API response structure
   };
+  
 
-  const { data, error, isLoading } = useSWR("/ready", fetcher);
+  const { data, error, isLoading } = useSWR("api/ready", fetcher, {refreshInterval:10000});
+  const {handleClickPedidoAtendido} = useMenu()
 
   if(isLoading) return(
     <div className="text-center">
@@ -63,6 +66,15 @@ export default function Ready() {
             <p className="text-2xl font-bold text-amber-600">
               Total a pagar: {formatearDinero(pedido.total)}
             </p>
+
+            <button 
+                type="button" 
+                className='bg-cyan-800 hover:bg-cyan-950 px-5 py-2 rounded uppercase 
+                font-bold text-white text-center w-full cursor-pointer'
+                onClick={() => handleClickPedidoAtendido(pedido.id)}
+              >
+                Atendido
+              </button>
           </div>
         ))}
       </div>

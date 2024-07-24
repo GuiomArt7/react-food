@@ -80,6 +80,7 @@ const MenuProvider = ({children}) => {
         toast.success('Eliminado del pedido')
      }
 
+     /* Enviar Orden a cocina */
      const handleSubmitNuevaOrden = async () => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
@@ -109,6 +110,7 @@ const MenuProvider = ({children}) => {
         }
      }
 
+     /* Marcar pedido como Completado */
      const handleClickCompletarPedido = async id => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
@@ -117,15 +119,32 @@ const MenuProvider = ({children}) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            toast.success('Pedido Completado');
+            
             setTimeout(() => {
                 setPedido([])
             }, 1000);
         } catch (error) {
             console.log(error)
         }
+        toast.success('Pedido Completado');
      }
 
+     /* Marcar Pedido Atendido */
+     const handleClickPedidoAtendido = async (id) => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        try {
+            await clienteAxios.put(`/api/pedidos/${id}`, null, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+     }
+
+
+     /* Marcar un producto como AGOTADO */
      const handleClickProductoAgotado = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
@@ -139,6 +158,7 @@ const MenuProvider = ({children}) => {
         }
      }
 
+     /* Volver a hacer un producto disponible */
      const handleClickAgotado = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
@@ -153,6 +173,7 @@ const MenuProvider = ({children}) => {
 
      }
 
+     /* Eliminar usuario */
      const handleDeleteUser = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN');
         try {
@@ -188,7 +209,8 @@ const MenuProvider = ({children}) => {
                 handleClickCompletarPedido,
                 handleClickProductoAgotado,
                 handleClickAgotado,
-                handleDeleteUser
+                handleDeleteUser,
+                handleClickPedidoAtendido
             }}
         >{children}</MenuContext.Provider>
 

@@ -12,7 +12,7 @@ export default function Ordenes() {
     }
   })
 
-  const {data, isLoading} = useSWR('/api/pedidos', fetcher)
+  const {data, isLoading} = useSWR('/api/pedidos', fetcher, {refreshInterval:10000})
 
   const {handleClickCompletarPedido} = useMenu()
  
