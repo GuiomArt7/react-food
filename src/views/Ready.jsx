@@ -36,7 +36,7 @@ export default function Ready() {
 
   if (error) return <div>Error: {error.message}</div>;
 
-  if (!data?.length) return <div>No hay órdenes listas</div>; // Handle no data
+  if (!data?.length) return <div className='text-3xl my-10'>No hay órdenes listas</div>; // Handle no data
 
   return (
     <div>
