@@ -34,8 +34,12 @@ export const useAuth = ({middleware, url}) => {
 
     const registro = async (datos, setErrores) => {
         try {
-            const {data} = await clienteAxios.post('/api/registro', datos)
-            localStorage.setItem('AUTH_TOKEN', data.token);
+            await clienteAxios.post('/api/registro', datos, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            navigate('/admin/usuarios')
             setErrores([])
             await mutate()
           } catch(error) {

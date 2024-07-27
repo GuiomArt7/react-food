@@ -34,10 +34,6 @@ const router = createBrowserRouter([
                 path: '/auth/login',
                 element: <Login />
             },
-            {
-                path: '/auth/registro',
-                element: <Registro />
-            }
         ]
     },
     {
@@ -57,7 +53,7 @@ const router = createBrowserRouter([
                 element: <Agotado/>
             },
             {
-                path: '/admin/auth/registro',
+                path: '/admin/registro',
                 element: <Registro />
             },
             {

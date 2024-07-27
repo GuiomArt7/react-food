@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import AdminSidebar from "../components/AdminSidebar";
 import { useAuth } from "../hooks/useAuth";
 import Footer from "../components/Footer";
+import { ToastContainer } from "react-toastify";
 
 export default function AdminLayout() {
 
@@ -17,6 +18,7 @@ export default function AdminLayout() {
         </main>
     </div>
     <Footer/>
+    <ToastContainer/>
     </>
   )
 }

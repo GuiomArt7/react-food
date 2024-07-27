@@ -1,5 +1,5 @@
 import { createRef, useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import Alerta from "../components/Alerta";
 import { useAuth } from "../hooks/useAuth";
 
@@ -11,7 +11,7 @@ export default function Registro() {
   const passwordConfirmationRef = createRef();
 
   const [errores, setErrores] = useState([]);
-  const {registro} = useAuth({middleware: 'AUTH_TOKEN', url: '/admin'})
+  const {registro} = useAuth({middleware: 'AUTH_TOKEN', url: '/admin/usuarios'})
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -30,9 +30,9 @@ export default function Registro() {
   return (
     <>
       <h1 className="text-4xl font-black">Crea tu cuenta</h1>
-      <p>Llena este formulario</p>
+      <p className='text-2xl'>Llena este formulario</p>
 
-      <div className="bg-white shadow-md rounded-md mt-10 px-5 py-10">
+      <div className="bg-white shadow-md rounded-md mt-10 px-5 py-15 max-w-screen-md mx-auto w-full  p-4 border border-gray-200 sm:p-6 md:p-8 ">
         <form 
           onSubmit={handleSubmit}
           noValidate
@@ -110,9 +110,9 @@ export default function Registro() {
         </form>
       </div>
 
-      <nav className="mt-5 inline-flex items-center text-white bg-teal-950 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-teal-600 dark:hover:bg-teal-700 focus:outline-none dark:focus:ring-teal-800">
+      {/* <nav className="mt-5 inline-flex items-center text-white bg-teal-950 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-teal-600 dark:hover:bg-teal-700 focus:outline-none dark:focus:ring-teal-800">
         <Link to="/admin">Menú principal</Link>
-      </nav>
+      </nav> */}
     </>
   );
 }

@@ -24,7 +24,7 @@ export default function AdminSidebar() {
             <Link to="/admin/agotados" className={`font-bold text-lg flex items-center gap-4 border w-full p-3  hover:bg-amber-400 cursor-pointer ${location.pathname === "/admin/agotados" ? "bg-amber-400" : ""}`}>Agotados</Link>
             <Link to="/admin/usuarios" className={`font-bold text-lg flex items-center gap-4 border w-full p-3  hover:bg-amber-400 cursor-pointer ${location.pathname === "/admin/usuarios" ? "bg-amber-400" : ""}`}>Usuarios</Link>
             <Link to="/" className="font-bold text-lg flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer" target="_blank">Ver Menú</Link>
-            <Link to="/auth/registro" className={`font-bold text-lg flex items-center gap-4 border w-full p-3  hover:bg-amber-400 cursor-pointer ${location.pathname === "/auth/registro" ? "bg-amber-400" : ""}`}>Registro</Link>
+            <Link to="/admin/registro" className={`font-bold text-lg flex items-center gap-4 border w-full p-3  hover:bg-amber-400 cursor-pointer ${location.pathname === "/admin/registro" ? "bg-amber-400" : ""}`}>Registro</Link>
             
             
         </nav>
