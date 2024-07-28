@@ -114,7 +114,7 @@ const MenuProvider = ({children}) => {
      const handleClickCompletarPedido = async id => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
-            await clienteAxios.put(`/api/pedidos/${id}`, null, {
+            await clienteAxios.put(`/api/pedidos/${id}?update=estado`, { estado: 1 }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -133,14 +133,18 @@ const MenuProvider = ({children}) => {
      const handleClickPedidoAtendido = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
-            await clienteAxios.put(`/api/pedidos/${id}`, null, {
+            await clienteAxios.put(`/api/pedidos/${id}?update=atendido`, { atendido: 1 }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
+            setTimeout(() => {
+                setPedido([])
+            }, 1000);
         } catch (error) {
             console.log(error)
         }
+        toast.success('Pedido finalizado');
      }
 
 

@@ -11,9 +11,7 @@ export default function Ready() {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      params: {
-        estado: 0, // Filter for completed orders
-      },
+     
     });
     return response.data.data; // Assuming your API response structure
   };
