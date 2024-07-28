@@ -38,6 +38,7 @@ export default function Usuarios() {
       
           {/* Check if data is available before rendering the table */}
           {data.length > 0 ? (
+            <div className="relative overflow-x-auto">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-cyan-900">
               <thead className="text-xs text-cyan-900 uppercase bg-cyan-50 dark:bg-cyan-700 dark:text-white">
                 <tr>
@@ -63,6 +64,7 @@ export default function Usuarios() {
                 ))}
               </tbody>
             </table>
+            </div>
           ) : (
             <p>Cargando usuarios...</p>
           )}
