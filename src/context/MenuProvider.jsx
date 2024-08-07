@@ -53,24 +53,18 @@ const MenuProvider = ({children}) => {
     }
 
     /* Funciones para agregar pedidos al resumen */
-    const handleAgregarPedido = ({ categoria_id, cantidad = 1, ...producto }) => {
-        setPedido((prevPedido) => {
-            const existingProductIndex = prevPedido.findIndex((item) => item.id === producto.id);
-    
-            if (existingProductIndex !== -1) {
-                const updatedProducts = [...prevPedido];
-                updatedProducts[existingProductIndex] = {
-                    ...updatedProducts[existingProductIndex],
-                    cantidad: updatedProducts[existingProductIndex].cantidad + cantidad,
-                };
-                toast.success('Cantidad actualizada correctamente');
-                return updatedProducts;
-            } else {
-                return [...prevPedido, { ...producto, cantidad }];
-            }
-        });
-    };
-    
+    const handleAgregarPedido = ({categoria_id, ...producto}) => {
+        setPedido([...pedido, producto])
+        if(pedido.some( pedidoState => pedidoState.id === producto.id)) {
+            const pedidoActualizado = pedido.map( pedidoState => pedidoState.id === 
+                producto.id ? producto : pedidoState)
+            setPedido(pedidoActualizado)
+            toast.success('Guardado correctamente')
+          }else {
+            setPedido([...pedido, producto])
+            toast.success('Agregado al pedido')
+          }
+    }
 
     /* Editar pedido */
     const handleEditarCantidad = id => {
