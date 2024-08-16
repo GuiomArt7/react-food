@@ -10,6 +10,7 @@ import Productos from './views/Productos'
 import Agotado from './views/Agotado'
 import Usuarios from './views/Usuarios'
 import Ready from './views/Ready'
+import Nosotros from './components/Nosotros'
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: '/auth/login',
                 element: <Login />
+            },
+            {
+                path: '/auth/nosotros',
+                element: <Nosotros />
             },
         ]
     },

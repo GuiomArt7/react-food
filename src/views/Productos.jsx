@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import useSWR from "swr"
 import clienteAxios from "../config/axios"
 import Producto from '../components/Producto'
@@ -12,6 +13,16 @@ export default function Productos() {
   }).then(datos => datos.data)
 
   const {data, error, isLoading } = useSWR('/api/productos', fetcher, {refreshInterval:10000})
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filterProducts = (data, searchTerm) => {
+    if (!searchTerm) return data;
+
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    return data.filter((producto) =>
+      producto.nombre.toLowerCase().includes(lowerSearchTerm)
+    );
+  };
 
   if(isLoading)return(
     <div className="text-center">
@@ -30,17 +41,24 @@ export default function Productos() {
     <div>
       <h1 className='text-4xl font-black'>Productos</h1>
       <p className='text-2xl my-10'>Maneja la disponibilidad desde aquí</p>
+      <input
+        type="text"
+        placeholder="Buscar producto..."
+        value={searchTerm}
+        onChange={(event) => setSearchTerm(event.target.value)}
+        className="border border-gray-300 rounded-md px-2 py-1 mr-2"
+      />
 
       <div 
       className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
 
-        {data.data.map(producto => (
-          <Producto 
+      {filterProducts(data.data, searchTerm).map((producto) => (
+        <Producto
           key={producto.imagen}
           producto={producto}
           botonDisponible={true}
-          />
-        ))} 
+        />
+      ))}
       </div>
     </div>
   )

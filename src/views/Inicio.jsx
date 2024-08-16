@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useSWR from "swr"
 import Producto from "../components/Producto"
 import useMenu from "../hooks/useMenu"
@@ -18,6 +19,18 @@ export default function Inicio() {
     refreshInterval: 1000
   })
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filterProducts = (data, categoriaActual, searchTerm) => {
+    if (!searchTerm) return data.filter(producto => producto.categoria_id === categoriaActual.id);
+
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    return data.filter((producto) => {
+      const productoName = producto.nombre.toLowerCase();
+      return producto.categoria_id === categoriaActual.id && productoName.includes(lowerSearchTerm);
+    });
+  };
+
   if(isLoading) return(
     <div className="text-center">
       <div role="status">
@@ -29,15 +42,21 @@ export default function Inicio() {
       </div>
     </div>
 )
-  const productos = data.data.filter(producto => producto.categoria_id === categoriaActual.id)
-
   return (
     <>
       <h1 className='text-4xl font-black'>{categoriaActual.nombre}</h1>
       <p className='text-2xl my-10'>Elige y personaliza tu pedido:</p>
 
+      <input
+        type="text"
+        placeholder="Buscar en esta categoría..."
+        value={searchTerm}
+        onChange={(event) => setSearchTerm(event.target.value)}
+        className="border border-gray-300 rounded-md px-2 py-1 mr-2"
+      />
+
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {productos.map(producto => (
+      {filterProducts(data.data, categoriaActual, searchTerm).map(producto => (
           <Producto 
           key={producto.imagen}
           producto={producto}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useSWR from "swr"
 import clienteAxios from "../config/axios"
 import useMenu from "../hooks/useMenu"
@@ -13,6 +14,17 @@ export default function Usuarios() {
 
   const {data, error, isLoading } = useSWR('/api/usuarios', fetcher, {refreshInterval:10000})
   const {handleDeleteUser} = useMenu()
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filterUsers = (data, searchTerm) => {
+    if (!searchTerm) return data;
+
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    return data.filter((user) => {
+      const userFields = [user.name.toLowerCase(), user.email.toLowerCase()];
+      return userFields.some((field) => field.includes(lowerSearchTerm));
+    });
+  };
   
 
   if(isLoading)return(
@@ -35,6 +47,17 @@ export default function Usuarios() {
         <div>
           <h1 className="text-4xl font-black">Usuarios registrados</h1>
           <p className="text-2xl my-10">Lista de usuarios</p>
+
+         {/* Search Bar */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Buscar usuario..."
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          className="border border-gray-300 rounded-md px-2 py-1 mr-2"
+        />
+      </div>
       
           {/* Check if data is available before rendering the table */}
           {data.length > 0 ? (
@@ -49,7 +72,7 @@ export default function Usuarios() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((usuario) => (
+              {filterUsers(data, searchTerm).map((usuario) => (
                   <tr key={usuario.id} className="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-20 dark:hover:bg-gray-100">
                     <td className="px-6 py-4">{usuario.name}</td>
                     <td className="px-6 py-4">{usuario.email}</td>
